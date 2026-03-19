@@ -5,7 +5,7 @@ import {
   getFeaturedRecipes, getRelatedRecipes, searchRecipes,
   getAllIngredients, getIngredientBySlug, getFeaturedIngredients,
   getAllFacets, getFacetBySlug, getValidFacetsForIngredient
-}  from './data.js'
+} from './data.js'
 
 // ── Design tokens ─────────────────────────────────────────
 const C = {
