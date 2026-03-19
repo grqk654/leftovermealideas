@@ -1,0 +1,15 @@
+[
+  { "id": "breakfast", "slug": "breakfast", "group": "meal-type", "name": "Breakfast", "description": "Morning meal ideas using leftovers.", "published": true, "sortOrder": 10 },
+  { "id": "lunch", "slug": "lunch", "group": "meal-type", "name": "Lunch", "description": "Quick lunch ideas from last night's leftovers.", "published": true, "sortOrder": 20 },
+  { "id": "dinner", "slug": "dinner", "group": "meal-type", "name": "Dinner", "description": "Easy dinner ideas built around leftovers.", "published": true, "sortOrder": 30 },
+  { "id": "dessert", "slug": "dessert", "group": "meal-type", "name": "Dessert", "description": "Sweet ideas using leftover ingredients.", "published": true, "sortOrder": 40 },
+  { "id": "snacks", "slug": "snacks", "group": "meal-type", "name": "Snacks", "description": "Quick bites and snacks from leftovers.", "published": true, "sortOrder": 50 },
+  { "id": "under-15-minutes", "slug": "under-15-minutes", "group": "time", "name": "Under 15 Minutes", "description": "Recipes ready in 15 minutes or less.", "published": true, "sortOrder": 60 },
+  { "id": "under-30-minutes", "slug": "under-30-minutes", "group": "time", "name": "Under 30 Minutes", "description": "Recipes ready in 30 minutes or less.", "published": true, "sortOrder": 70 },
+  { "id": "meal-prep", "slug": "meal-prep", "group": "time", "name": "Meal Prep", "description": "Make-ahead ideas that use up leftovers.", "published": true, "sortOrder": 80 },
+  { "id": "easy", "slug": "easy", "group": "constraint", "name": "Easy", "description": "Simple recipes anyone can make.", "published": true, "sortOrder": 90 },
+  { "id": "budget", "slug": "budget", "group": "constraint", "name": "Budget", "description": "Affordable recipes that stretch leftovers further.", "published": true, "sortOrder": 100 },
+  { "id": "vegetarian", "slug": "vegetarian", "group": "constraint", "name": "Vegetarian", "description": "Meat-free leftover recipe ideas.", "published": true, "sortOrder": 110 },
+  { "id": "healthy", "slug": "healthy", "group": "constraint", "name": "Healthy", "description": "Nutritious ways to use up leftovers.", "published": true, "sortOrder": 120 },
+  { "id": "kid-friendly", "slug": "kid-friendly", "group": "constraint", "name": "Kid-Friendly", "description": "Leftover meals the whole family will enjoy.", "published": true, "sortOrder": 130 }
+]
