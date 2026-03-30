@@ -269,14 +269,20 @@ function HomePage() {
             </div>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 10 }}>
-            {[['🥘','Meal prep containers'],['🍳','Non-stick wok'],['🫙','Airtight food storage'],['🔪','Chef\'s knife set']].map(([e, n]) => (
-              <div key={n} style={{ background: C.bg, border: `1px solid ${C.border}`, borderRadius: 12, padding: 16, textAlign: 'center', cursor: 'pointer' }}
-                onMouseEnter={ev => ev.currentTarget.style.borderColor = C.greenMid}
-                onMouseLeave={ev => ev.currentTarget.style.borderColor = C.border}>
-                <div style={{ fontSize: 28, marginBottom: 8 }}>{e}</div>
-                <div style={{ fontSize: 12, fontWeight: 500, color: C.text, marginBottom: 4, fontFamily: F.body }}>{n}</div>
-                <div style={{ fontSize: 11, color: C.green, fontWeight: 500, fontFamily: F.body }}>Shop on Amazon →</div>
-              </div>
+           {[
+  ['🥘','Meal prep containers','https://www.amazon.com/s?k=meal+prep+containers&tag=grqk6540-20'],
+  ['🍳','Non-stick wok','https://www.amazon.com/s?k=non+stick+wok&tag=grqk6540-20'],
+  ['🫙','Airtight food storage','https://www.amazon.com/s?k=airtight+food+storage+containers&tag=grqk6540-20'],
+  ['🔪',"Chef's knife set",'https://www.amazon.com/s?k=chef+knife+set&tag=grqk6540-20'],
+].map(([e, n, url]) => (
+  <a key={n} href={url} target="_blank" rel="noopener noreferrer" style={{ background: C.bg, border: `1px solid ${C.border}`, borderRadius: 12, padding: 16, textAlign: 'center', cursor: 'pointer', textDecoration: 'none', display: 'block' }}
+    onMouseEnter={ev => ev.currentTarget.style.borderColor = C.greenMid}
+    onMouseLeave={ev => ev.currentTarget.style.borderColor = C.border}>
+    <div style={{ fontSize: 28, marginBottom: 8 }}>{e}</div>
+    <div style={{ fontSize: 12, fontWeight: 500, color: C.text, marginBottom: 4, fontFamily: F.body }}>{n}</div>
+    <div style={{ fontSize: 11, color: C.green, fontWeight: 500, fontFamily: F.body }}>Shop on Amazon →</div>
+  </a>
+))}
             ))}
           </div>
         </div>
