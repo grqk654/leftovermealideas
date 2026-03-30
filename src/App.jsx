@@ -282,7 +282,6 @@ function HomePage() {
                 <div style={{ fontSize: 12, fontWeight: 500, color: C.text, marginBottom: 4, fontFamily: F.body }}>{n}</div>
                 <div style={{ fontSize: 11, color: C.green, fontWeight: 500, fontFamily: F.body }}>Shop on Amazon →</div>
               </a>
-      
           </div>
         </div>
       </div>
