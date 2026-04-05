@@ -608,16 +608,70 @@ function RecipePage() {
 }
 
 function GuidesPage() {
+  const navigate = useNavigate()
+  const guides = getAllGuides()
+ 
+  const storage = guides.filter(g => g.guideType === 'storage')
+  const reheating = guides.filter(g => g.guideType === 'reheating')
+  const safety = guides.filter(g => g.guideType === 'safety')
+ 
+  const TYPE_META = {
+    storage:   { label: 'Storage',      emoji: '🫙', color: C.greenLight,  border: C.greenBorder },
+    reheating: { label: 'Reheating',    emoji: '🔥', color: C.amber,       border: C.amberBorder },
+    safety:    { label: 'Food Safety',  emoji: '✅', color: '#EEF5FF',     border: '#B8D0F5' },
+  }
+ 
+  function GuideCard({ guide }) {
+    const meta = TYPE_META[guide.guideType]
+    return (
+      <div
+        onClick={() => navigate(`/guides/${guide.slug}`)}
+        style={{
+          border: `1px solid ${C.border}`, borderRadius: 14, padding: '20px',
+          cursor: 'pointer', background: C.bg, transition: 'border-color 0.15s, transform 0.15s',
+        }}
+        onMouseEnter={e => { e.currentTarget.style.borderColor = C.greenMid; e.currentTarget.style.transform = 'translateY(-2px)' }}
+        onMouseLeave={e => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.transform = 'translateY(0)' }}
+      >
+        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 10 }}>
+          <span style={{ background: meta.color, border: `1px solid ${meta.border}`, borderRadius: 20, padding: '3px 10px', fontSize: 11, fontWeight: 500, color: C.text, fontFamily: F.body }}>
+            {meta.emoji} {meta.label}
+          </span>
+          <span style={{ fontSize: 12, color: C.textLight, fontFamily: F.body }}>{guide.readTime} min read</span>
+        </div>
+        <div style={{ fontFamily: F.display, fontSize: 15, fontWeight: 600, color: C.text, lineHeight: 1.3, marginBottom: 8 }}>{guide.title}</div>
+        <div style={{ fontSize: 13, color: C.textMuted, fontFamily: F.body, lineHeight: 1.55 }}>{guide.excerpt}</div>
+        <div style={{ marginTop: 12, fontSize: 12, color: C.green, fontFamily: F.body, fontWeight: 500 }}>Read guide →</div>
+      </div>
+    )
+  }
+ 
+  function Section({ title, guides, type }) {
+    const meta = TYPE_META[type]
+    if (!guides.length) return null
+    return (
+      <div style={{ marginBottom: 48 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
+          <div style={{ width: 36, height: 36, background: meta.color, border: `1px solid ${meta.border}`, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18 }}>{meta.emoji}</div>
+          <h2 style={{ fontFamily: F.display, fontSize: 20, fontWeight: 600, color: C.text, margin: 0 }}>{title}</h2>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 14 }}>
+          {guides.map(g => <GuideCard key={g.id} guide={g} />)}
+        </div>
+      </div>
+    )
+  }
+ 
   return (
-    <div style={{ maxWidth: 800, margin: '0 auto', padding: '48px 24px' }}>
+    <div style={{ maxWidth: 1100, margin: '0 auto', padding: '40px 24px' }}>
       <Breadcrumb items={[{ label: 'Home', to: '/' }, { label: 'Guides' }]} />
       <h1 style={{ fontFamily: F.display, fontSize: 30, fontWeight: 600, color: C.text, margin: '16px 0 8px', letterSpacing: '-0.03em' }}>Guides</h1>
-      <p style={{ color: C.textMuted, fontSize: 15, fontFamily: F.body, marginBottom: 40, lineHeight: 1.6 }}>Storage tips, food safety, and everything else you need to make the most of your leftovers.</p>
-      <div style={{ textAlign: 'center', padding: '48px', border: `1px dashed ${C.border}`, borderRadius: 16, color: C.textMuted, fontFamily: F.body }}>
-        <div style={{ fontSize: 40, marginBottom: 12 }}>📖</div>
-        <div style={{ fontSize: 16, marginBottom: 8 }}>Guides coming soon</div>
-        <div style={{ fontSize: 14 }}>Storage tips, reheating guides, and food safety articles.</div>
-      </div>
+      <p style={{ color: C.textMuted, fontSize: 15, fontFamily: F.body, marginBottom: 40, lineHeight: 1.6 }}>
+        Storage tips, reheating guides, and food safety articles — everything you need to make the most of your leftovers.
+      </p>
+      <Section title="Storage Tips"       guides={storage}   type="storage" />
+      <Section title="Reheating Guides"   guides={reheating} type="reheating" />
+      <Section title="Food Safety"        guides={safety}    type="safety" />
     </div>
   )
 }
