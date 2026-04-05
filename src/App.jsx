@@ -775,6 +775,7 @@ export default function App() {
           <Route path="/recipes" element={<RecipesPage />} />
           <Route path="/recipes/:slug" element={<RecipePage />} />
           <Route path="/guides" element={<GuidesPage />} />
+          <Route path="/guides/:slug" element={<GuidePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
