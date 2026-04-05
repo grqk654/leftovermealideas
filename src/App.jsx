@@ -4,7 +4,7 @@ import {
   getAllRecipes, getRecipeBySlug, getRecipesByIngredient, getRecipesByFacet,
   getFeaturedRecipes, getRelatedRecipes, searchRecipes,
   getAllIngredients, getIngredientBySlug, getFeaturedIngredients,
-  getAllFacets, getFacetBySlug, getValidFacetsForIngredient
+  getAllFacets, getFacetBySlug, getValidFacetsForIngredient,
   getAllGuides, getGuideBySlug
 } from './lib/data.js'
 
