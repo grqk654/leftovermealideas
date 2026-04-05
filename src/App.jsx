@@ -5,6 +5,7 @@ import {
   getFeaturedRecipes, getRelatedRecipes, searchRecipes,
   getAllIngredients, getIngredientBySlug, getFeaturedIngredients,
   getAllFacets, getFacetBySlug, getValidFacetsForIngredient
+  getAllGuides, getGuideBySlug
 } from './lib/data.js'
 
 // ── Design tokens ─────────────────────────────────────────
