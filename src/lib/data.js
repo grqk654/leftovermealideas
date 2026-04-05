@@ -2,7 +2,6 @@ import recipesData from '../data/recipes.json'
 import ingredientsData from '../data/ingredients.json'
 import facetsData from '../data/facets.json'
 import guidesData from '../data/guides.json'
-
 // ── Recipes ──────────────────────────────────────────────
 export const getAllRecipes = () =>
   recipesData.filter(r => r.published)
