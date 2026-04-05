@@ -676,6 +676,77 @@ function GuidesPage() {
   )
 }
 
+function GuidePage() {
+  const { slug } = useParams()
+  const guide = getGuideBySlug(slug)
+ 
+  if (!guide) return <NotFound />
+ 
+  const TYPE_META = {
+    storage:   { label: 'Storage Tips', emoji: '🫙', color: C.greenLight, border: C.greenBorder },
+    reheating: { label: 'Reheating',    emoji: '🔥', color: C.amber,      border: C.amberBorder },
+    safety:    { label: 'Food Safety',  emoji: '✅', color: '#EEF5FF',    border: '#B8D0F5' },
+    faq:       { label: 'FAQ',          emoji: '❓', color: '#F5F0FF',    border: '#C8B8F5' },
+  }
+  const meta = TYPE_META[guide.guideType] || TYPE_META.faq
+ 
+  return (
+    <div style={{ maxWidth: 720, margin: '0 auto', padding: '32px 24px 64px' }}>
+      <Breadcrumb items={[
+        { label: 'Home', to: '/' },
+        { label: 'Guides', to: '/guides' },
+        { label: guide.title },
+      ]} />
+ 
+      {/* Hero */}
+      <div style={{ margin: '20px 0 32px' }}>
+        <span style={{ background: meta.color, border: `1px solid ${meta.border}`, borderRadius: 20, padding: '4px 12px', fontSize: 12, fontWeight: 500, color: C.text, fontFamily: F.body }}>
+          {meta.emoji} {meta.label}
+        </span>
+        <h1 style={{ fontFamily: F.display, fontSize: 32, fontWeight: 600, color: C.text, letterSpacing: '-0.03em', lineHeight: 1.2, margin: '14px 0 10px' }}>{guide.title}</h1>
+        <p style={{ fontSize: 16, color: C.textMuted, fontFamily: F.body, lineHeight: 1.65, marginBottom: 0 }}>{guide.description}</p>
+        <div style={{ fontSize: 13, color: C.textLight, fontFamily: F.body, marginTop: 8 }}>{guide.readTime} min read</div>
+      </div>
+ 
+      {/* Key Takeaways */}
+      {guide.keyTakeaways?.length > 0 && (
+        <div style={{ background: C.bgSoft, border: `1px solid ${C.greenBorder}`, borderRadius: 14, padding: '18px 20px', marginBottom: 36 }}>
+          <div style={{ fontFamily: F.display, fontSize: 15, fontWeight: 600, color: C.text, marginBottom: 12 }}>⚡ Key Takeaways</div>
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+            {guide.keyTakeaways.map((item, i) => (
+              <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, padding: '5px 0', fontSize: 14, color: C.text, fontFamily: F.body, lineHeight: 1.5 }}>
+                <span style={{ color: C.green, fontWeight: 700, flexShrink: 0, marginTop: 1 }}>✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+ 
+      {/* Content sections */}
+      <div style={{ marginBottom: 48 }}>
+        {guide.sections?.map((section, i) => (
+          <div key={i} style={{ marginBottom: 32 }}>
+            <h2 style={{ fontFamily: F.display, fontSize: 20, fontWeight: 600, color: C.text, marginBottom: 10, letterSpacing: '-0.02em' }}>{section.heading}</h2>
+            <p style={{ fontSize: 15, color: C.text, fontFamily: F.body, lineHeight: 1.75, margin: 0 }}>{section.body}</p>
+          </div>
+        ))}
+      </div>
+ 
+      {/* AdSense placeholder */}
+      <div style={{ background: '#f9f9f9', border: `1px dashed ${C.border}`, borderRadius: 10, padding: 20, textAlign: 'center', marginBottom: 40 }}>
+        <div style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.08em', color: C.textLight, marginBottom: 4, fontFamily: F.body }}>Advertisement</div>
+        <div style={{ fontSize: 13, color: C.textLight, fontFamily: F.body }}>Google AdSense</div>
+      </div>
+ 
+      {/* Back link */}
+      <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: 24 }}>
+        <Link to="/guides" style={{ color: C.green, fontSize: 14, textDecoration: 'none', fontFamily: F.body }}>← All Guides</Link>
+      </div>
+    </div>
+  )
+}
+
 function NotFound() {
   return (
     <div style={{ maxWidth: 480, margin: '80px auto', padding: '0 24px', textAlign: 'center' }}>
