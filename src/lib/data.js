@@ -1,6 +1,7 @@
 import recipesData from '../data/recipes.json'
 import ingredientsData from '../data/ingredients.json'
 import facetsData from '../data/facets.json'
+import guidesData from '../data/guides.json'
 
 // ── Recipes ──────────────────────────────────────────────
 export const getAllRecipes = () =>
@@ -77,3 +78,9 @@ export const getValidFacetsForIngredient = (ingredientId, minRecipes = 4) => {
     return count >= minRecipes
   })
 }
+// ── Guides ────────────────────────────────────────────────
+export const getAllGuides = () =>
+  guidesData.filter(g => g.published).sort((a, b) => a.sortOrder - b.sortOrder)
+
+export const getGuideBySlug = (slug) =>
+  guidesData.find(g => g.slug === slug && g.published) || null
