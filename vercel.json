@@ -1,21 +1,5 @@
 {
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "leftovermealideas.com"
-        }
-      ],
-      "destination": "https://www.leftovermealideas.com/$1",
-      "permanent": true
-    }
-  ],
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
