@@ -225,7 +225,7 @@ function HomePage() {
 
       {/* Stats bar */}
       <div style={{ borderBottom: `1px solid ${C.border}` }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px', display: 'grid', gridTemplateColumns: 'repeat(2,1fr)' }}>
         {[['70+', 'Recipes at launch'], ['2', 'Ingredient clusters'], ['8', 'Meal categories'], ['0', 'Sign-ups required']].map(([n, l]) => (
           <div key={l} style={{ padding: '18px 32px', borderRight: `1px solid ${C.border}` }}>
             <div style={{ fontFamily: F.display, fontSize: 28, fontWeight: 600, color: C.greenDark, letterSpacing: '-0.03em' }}>{n}</div>
@@ -253,7 +253,7 @@ function HomePage() {
             <h2 style={{ fontFamily: F.display, fontSize: 22, fontWeight: 600, color: C.text }}>Popular right now</h2>
             <Link to="/recipes" style={{ fontSize: 14, color: C.green, textDecoration: 'none', fontFamily: F.body }}>See all →</Link>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 14 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 14 }}>
             {featured.map(r => <RecipeCard key={r.id} recipe={r} />)}
           </div>
         </div>
@@ -273,7 +273,7 @@ function HomePage() {
               <div style={{ fontSize: 12, color: C.textMuted, fontFamily: F.body }}>Amazon affiliate · We earn a small commission at no cost to you</div>
             </div>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 10 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 10 }}>
             {[
               ['🥘','Meal prep containers','https://www.amazon.com/s?k=meal+prep+containers&tag=grqk6540-20'],
               ['🍳','Non-stick wok','https://www.amazon.com/s?k=non+stick+wok&tag=grqk6540-20'],
